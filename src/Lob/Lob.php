@@ -15,6 +15,7 @@ use InvalidArgumentException;
 use BadMethodCallException;
 use Lob\Resource;
 use Lob\Resource\Addresses;
+use Lob\Resource\Areas;
 use Lob\Resource\BankAccounts;
 use Lob\Resource\Checks;
 use Lob\Resource\Countries;
@@ -68,6 +69,11 @@ class Lob
     public function addresses()
     {
         return new Addresses($this);
+    }
+
+    public function areas()
+    {
+        return new Areas($this);
     }
 
     public function bankAccounts()

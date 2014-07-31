@@ -13,6 +13,7 @@ namespace Lob\Tests;
 
 use Lob\Lob;
 use Lob\Resource\Addresses;
+use Lob\Resource\Areas;
 use Lob\Resource\Jobs;
 use Lob\Resource\Objects;
 use Lob\Resource\Packagings;
@@ -37,6 +38,11 @@ class LobTest extends \PHPUnit_Framework_TestCase
     public function testAddressesMethodReturnsLobResourceAddressesClass()
     {
         $this->assertTrue($this->lob->addresses() instanceof Addresses);
+    }
+
+    public function testAreasMethodReturnsLobResourceAreasClass()
+    {
+        $this->assertTrue($this->lob->areas() instanceof Areas);
     }
 
     public function testJobsMethodReturnsLobResourceJobsClass()
