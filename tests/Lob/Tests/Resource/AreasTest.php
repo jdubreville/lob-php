@@ -13,8 +13,8 @@ class AreasTest extends \Lob\Tests\ResourceTest
      $area = $this->resource->create(array(
         'name' => 'Demo Area',
         'to' => AddressesTest::$validCreateData,
-        'front' => 'https://www.lob.com/sam_back_template.pdf',
-        'back' => 'https://www.lob.com/sam_back_template.pdf',
+        'front' => 'https://assets.lob.com/sam_back_template.pdf',
+        'back' => 'https://assets.lob.com/sam_back_template.pdf',
         'routes' => '94158-C001',
         'target_type' => 'all',
       ));
@@ -28,8 +28,8 @@ class AreasTest extends \Lob\Tests\ResourceTest
      $area = $this->resource->create(array(
         'name' => 'Demo Area',
         'to' => AddressesTest::$validCreateData,
-        'front' => 'https://www.lob.com/sam_back_template.pdf',
-        'back' => 'https://www.lob.com/sam_back_template.pdf',
+        'front' => 'https://assets.lob.com/sam_back_template.pdf',
+        'back' => 'https://assets.lob.com/sam_back_template.pdf',
         'routes' => '94158-C001',
         'target_type' => 'all',
         'name' => 'Demo Check',

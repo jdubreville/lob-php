@@ -3,7 +3,7 @@
 /*
  * This file is part of the Lob.com PHP Client.
  *
- * (c) 2013 Lob.com, https://www.lob.com
+ * (c) 2013 Lob.com, https://assets.lob.com
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -25,7 +25,7 @@ class PostcardsTest extends \Lob\Tests\ResourceTest
             'to' => AddressesTest::$validCreateData,
             'from' => AddressesTest::$validCreateData,
             'message' => 'This an example message on back of the postcard',
-            'front' => 'https://www.lob.com/test.pdf',
+            'front' => 'https://assets.lob.com/test.pdf',
         ));
 
         $this->assertTrue(is_array($postcard));
@@ -38,7 +38,7 @@ class PostcardsTest extends \Lob\Tests\ResourceTest
             'name' => 'Demo Postcard job', // Required
             'to' => AddressesTest::$validCreateData,
             'from' => AddressesTest::$validCreateData,
-            'front' => 'https://www.lob.com/test.pdf',
+            'front' => 'https://assets.lob.com/test.pdf',
             'back' => '@'.realpath(__DIR__.'/../TestData/pdfs/test.pdf'),
         ));
 

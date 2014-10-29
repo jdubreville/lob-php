@@ -3,7 +3,7 @@
 /*
  * This file is part of the Lob.com PHP Client.
  *
- * (c) 2013 Lob.com, https://www.lob.com
+ * (c) 2013 Lob.com, https://assets.lob.com
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -32,7 +32,7 @@ class ObjectsTest extends \Lob\Tests\ResourceTest
     {
         $object = $this->resource->create(array(
             'name' => 'GO BLUE',
-            'file' => 'https://www.lob.com/test.pdf',
+            'file' => 'https://assets.lob.com/test.pdf',
             'setting_id' => 200,
             'quantity' => 1,
         ));
