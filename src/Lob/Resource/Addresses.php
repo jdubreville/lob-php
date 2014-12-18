@@ -19,6 +19,7 @@ class Addresses extends ResourceBase
     {
         return $this->sendRequest(
             'POST',
+            $this->lob->getApiVersion(),
             $this->lob->getVersion(),
             $this->lob->getClientVersion(),
             'verify',

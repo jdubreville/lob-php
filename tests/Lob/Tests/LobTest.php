@@ -38,7 +38,7 @@ class LobTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->lob = new Lob('test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc');
+        $this->lob = new Lob('test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc', '2014-11-25');
     }
 
     public function testVersionDefaultValueIsV1()
@@ -102,6 +102,14 @@ class LobTest extends \PHPUnit_Framework_TestCase
         $this->lob->setApiKey("hello world");
         $this->assertTrue($this->lob->getApiKey() === "hello world");
         $this->lob->setApiKey($oldApiKey);
+    }
+
+    public function testSetApiVersionMethodSetsApiVersion()
+    {
+        $oldVersion = $this->lob->getApiVersion();
+        $this->lob->setApiVersion("hello world");
+        $this->assertTrue($this->lob->getApiVersion() === "hello world");
+        $this->lob->setApiVersion($oldVersion);
     }
 
     public function testSetApiKeyMethodWithBadApiKey()

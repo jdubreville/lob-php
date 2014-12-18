@@ -30,16 +30,20 @@ use Lob\Resource\States;
 
 class Lob
 {
+    private $apiVersion;
     private $version;
     private $apiKey;
     private $clientVersion;
 
-    public function __construct($apiKey = null, $version = 'v1')
+    public function __construct($apiKey = null, $apiVersion = null, $version = 'v1')
     {
         if (!is_null($apiKey)) {
             $this->setApiKey($apiKey);
         }
         $this->version = $version;
+        if (!is_null($apiVersion)) {
+          $this->setApiVersion($apiVersion);
+        }
         $this->clientVersion = '1.2.3';
     }
 
@@ -56,6 +60,21 @@ class Lob
         $this->apiKey = $apiKey;
 
         return $this;
+    }
+
+    public function setApiVersion($apiVersion)
+    {
+        if (empty($apiVersion)) {
+            throw new InvalidArgumentException('API Version must be a string');
+        }
+        $this->apiVersion = $apiVersion;
+
+        return $this;
+    }
+
+    public function getApiVersion()
+    {
+      return $this->apiVersion;
     }
 
     public function getVersion()

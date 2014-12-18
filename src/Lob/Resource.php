@@ -36,6 +36,7 @@ abstract class Resource implements ResourceInterface
     {
         $all = $this->sendRequest(
             'GET',
+            $this->lob->getApiVersion(),
             $this->lob->getVersion(),
             $this->lob->getClientVersion(),
             $this->resourceName(),
@@ -53,6 +54,7 @@ abstract class Resource implements ResourceInterface
     {
         return $this->sendRequest(
             'POST',
+            $this->lob->getApiVersion(),
             $this->lob->getVersion(),
             $this->lob->getClientVersion(),
             $this->resourceName(),
@@ -65,6 +67,7 @@ abstract class Resource implements ResourceInterface
     {
         return $this->sendRequest(
             'GET',
+            $this->lob->getApiVersion(),
             $this->lob->getVersion(),
             $this->lob->getClientVersion(),
             $this->resourceName().'/'.strval($id),
@@ -77,6 +80,7 @@ abstract class Resource implements ResourceInterface
     {
         return $this->sendRequest(
             'DELETE',
+            $this->lob->getApiVersion(),
             $this->lob->getVersion(),
             $this->lob->getClientVersion(),
             $this->resourceName().'/'.strval($id),
@@ -92,10 +96,10 @@ abstract class Resource implements ResourceInterface
         return array_pop($class);
     }
 
-    protected function sendRequest($method, $version, $clientVersion, $path,
+    protected function sendRequest($method, $apiVersion, $version, $clientVersion, $path,
         array $query, array $body = null)
     {
-        $request = $this->prepareRequest($method, $version, $clientVersion,
+        $request = $this->prepareRequest($method, $apiVersion, $version, $clientVersion,
           $path, $query, $body);
 
         try {
@@ -138,14 +142,19 @@ abstract class Resource implements ResourceInterface
         return $response->json();
     }
 
-    protected function prepareRequest($method, $version, $clientVersion, $path, array $query,
+    protected function prepareRequest($method, $apiVersion, $version, $clientVersion, $path, array $query,
         array $body = null)
     {
         $path = '/'.$version.'/'.$path;
         $headers = array(
             'Accept' => 'application/json; charset=utf-8',
             'User-Agent' => 'Lob/v1 PhpBindings/' . $clientVersion
-        );
+          );
+
+        if (!is_null($apiVersion)) {
+          $headers['Lob-Version'] = $apiVersion;
+        }
+
         $queryString = '';
         if (!empty($query)) {
             $queryString = '?'.http_build_query($query);
