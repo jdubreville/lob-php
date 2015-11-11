@@ -110,4 +110,20 @@ class LobTest extends \PHPUnit_Framework_TestCase
         $this->lob->setApiKey(null);
     }
 
+    public function testSetTimeoutSetting()
+    {
+        //$this->setExpectedException('CurlException');
+        $this->lob->setOptions(array( 'request' => array( 'timeout' => 1 )));
+        $options = $this->lob->getOptions();
+        $this->assertTrue($options['request']['timeout'] === 1);
+    }
+
+    public function testSetConnecitonTimeoutOption()
+    {
+        $this->lob->setOptions(array( 'request' => array( 'connection_timeout' => 1 )));
+        $options = $this->lob->getOptions();
+        $this->assertTrue($options['request']['connection_timeout'] === 1);
+    }
+    
+
 }

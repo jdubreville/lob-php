@@ -146,12 +146,38 @@ abstract class Resource implements ResourceInterface
             'Accept' => 'application/json; charset=utf-8',
             'User-Agent' => 'Lob/v1 PhpBindings/' . $clientVersion
         );
+
         $queryString = '';
         if (!empty($query)) {
             $queryString = '?'.http_build_query($query);
         }
 
         $client = new HttpClient('https://api.lob.com');
+
+
+        $options = $this->lob->getOptions();
+        if(($options !== false) && (is_array($options))){
+            if(isset($options["request"])){
+                $requestOptions = $options["request"];
+
+                if(isset($requestOptions["connection_timeout"])){
+                    $client->setDefaultOption("request.options/connection_timeout",$requestOptions["connection_timeout"]);
+                }
+
+
+                if(isset($requestOptions["timeout"])){
+                    $client->setDefaultOption("request.options/timeout",$requestOptions["timeout"]);
+                }
+
+                if(isset($requestOptions["headers"]) && is_array($requestOptions["headers"])){
+                    foreach($requestOptions["headers"] as $name => $value){
+                        $headers[$name] = $value;
+                    }
+                }
+
+                //print_r($client->getDefaultOptions());
+            }
+        }
 
         foreach ($body as $key => $value) {
           if ($value === FALSE) {

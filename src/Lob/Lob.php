@@ -34,8 +34,9 @@ class Lob
     private $version;
     private $apiKey;
     private $clientVersion;
+    private $options = false;
 
-    public function __construct($apiKey = null, $version = 'v1')
+    public function __construct($apiKey = null, $version = 'v1', $options = array())
     {
         if (!is_null($apiKey)) {
             $this->setApiKey($apiKey);
@@ -67,6 +68,16 @@ class Lob
     public function getClientVersion()
     {
       return $this->clientVersion;
+    }
+
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    public function setOptions($options)
+    {
+        $this->options = $options;
     }
 
     public function addresses()
