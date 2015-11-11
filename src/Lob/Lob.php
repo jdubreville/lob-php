@@ -36,7 +36,7 @@ class Lob
     private $clientVersion;
     private $options = false;
 
-    public function __construct($apiKey = null, $version = 'v1', $options = array())
+    public function __construct($apiKey = null, $version = 'v1')
     {
         if (!is_null($apiKey)) {
             $this->setApiKey($apiKey);

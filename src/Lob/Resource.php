@@ -154,7 +154,6 @@ abstract class Resource implements ResourceInterface
 
         $client = new HttpClient('https://api.lob.com');
 
-
         $options = $this->lob->getOptions();
         if(($options !== false) && (is_array($options))){
             if(isset($options["request"])){
